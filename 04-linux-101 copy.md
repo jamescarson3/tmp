@@ -50,9 +50,9 @@ Inside the root directory are several other directories:
 `tmp` (for temporary files that don't need to be stored long-term),
 and so on.
 
-We know that our current working directory `/users/april` is stored inside `/users`
-because `/users` is the first part of its name.
-Similarly, we know that `/users` is stored inside the root directory `/`
+We know that our current working directory `/home/pi` is stored inside `/home`
+because `/home` is the first part of its name.
+Similarly, we know that `/home` is stored inside the root directory `/`
 because its name begins with `/`.
 
 > Notice that there are two meanings for the `/` character.
@@ -72,7 +72,7 @@ $ ls
 arranged neatly into columns.
 
 We can make its output more comprehensible by using the flag `-F`,
-which tells `ls` to add a trailing `/` to the names of directories:
+which tells `ls` to add a trailing `/` to the names of directories.
 
 ```
 $ ls -F
@@ -83,20 +83,19 @@ $ ls -F
 We can *change directory* using `cd` followed by a directory name.  This will change our location to a different directory.
 
 ```
-$ cd data
+$ cd python_games
 ```
 
 `cd` doesn't print anything, but if we run `pwd` after it, we can see where we are now.
-If we run `ls` without arguments now, it lists the contents of our new directory,
-because that's where we now are:
+If we run `ls`, it lists the contents of where we are now.
 
 ```
 $ pwd
 $ ls
 ```
 
-We now know how to go down the directory tree.
-How do we go up?
+We now know how to go down into a directory.
+How do we go up and out of our current directory?
 
 It’s simple to use `cd ..` to go up one level:
 
@@ -107,7 +106,7 @@ $ pwd
 ```
 
 `..` is a special directory name meaning
-"the directory containing this one", or more succinctly, the parent of the current directory.
+"the directory containing this one", or, "the parent of the current directory".
 
 Another option when changing directories is to list the complete *absolute* path starting with root directory `/`
 
