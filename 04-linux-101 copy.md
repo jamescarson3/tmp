@@ -9,6 +9,8 @@ Getting Started with Raspberry Pi
 
 # Learn a little Linux
 
+The purpose of this is to present basic terminal commands that will be used during CODE@TACC.
+
 ## Navigating the filesystem
 
 The part of the operating system responsible for managing files 
@@ -25,7 +27,7 @@ and delete files and directories.
 To start exploring them, let's open a terminal window:
 
 ```
-$
+$ 
 ```
 
 The dollar sign is a prompt, which shows us that the shell is waiting for input.
@@ -111,19 +113,19 @@ $ pwd
 Another option when changing directories is to list the complete *absolute* path starting with root directory `/`
 
 ```
-$ cd /users/look_up_what_is_there_by_default
+$ cd /home/pi/Desktop
 ```
 
 If you type `cd` by itself, you will go into your home directory
 #### Challenge
 
-1. Find the path of your home directory
+1. Discover the path of your home directory
 
 #### What you learned
 
 1. How to find what directory you are in using `pwd`
 2. Using `ls -F` to list files in your current working directory
-3. Changing directories using `cd <directory_name>`
+3. Changing directories 
 4. How to get to your home directory
 
 #### More info
@@ -133,22 +135,105 @@ If you type `cd` by itself, you will go into your home directory
 
 ## Creating and deleting files and directories
 
-https://github.com/johnfonner/TACCLinuxBasics/blob/master/shell/02-create.md
+We now know how to explore directories and files, but how do we create new ones?
 
-mkdirnano   (or Leafpad)mvcprmrmdir
+Go ahead and create a new directory called `my_scripts` using the command `mkdir my_scripts`.
+
+```
+$ cd
+$ mkdir my_scripts
+```
+
+As you might (or might not) guess from its name, `mkdir` means *make directory*.
+Since `my_scripts` is a relative path (i.e., doesn't have a leading slash),
+the new directory is made below the current working directory:
+
+```
+$ ls -F
+```
+
+However, there's nothing in it yet:
+
+```
+$ cd my_scripts
+$ ls -F
+```
+
+To create an empty file, you can use the command `touch`.
+
+```
+$ touch draft.txt
+$ ls -F
+```
+
+At this point, you want to make a backup of this *very* important empty file.  You can use `cp` to make copies of files or directories
+
+```
+$ cp draft.txt draft2.txt
+$ ls -F
+```
+
+You can see that the command `cp` took two filenames.  The first one was the existing file, the second was the new file.
+
+If you decide that *draft2.txt* is not the best name for a backup file, you can change a name using the `mv` command which moves the file.
+
+```
+$ mv draft2.txt draft_backup.txt
+$ ls -F
+```
+
+As *move* implies, it can be used to actually move the file someplace else.  For example, if we do not want the backup file in this directory, we can move it out.
+
+```
+$ mv draft_backup.txt ../draft_backup.txt
+$ ls -F
+```
+
+Based on what you know from `cp`, can you see how `mv` works? Where is the draft_backup.txt file now?  Can you find it?
+
+```
+$ cd ..
+$ ls -F
+```
+
+Okay, now that we have made a mess with empty files and directories we do not actually need, let’s clean up.
+
+***Notice!*** Deleting Is Forever
+
+```
+$ rm draft_backup.txt
+$ ls -F
+```
+
+`rm` is short for "remove”. It works on files, but not directories.  For directories, you can use `rmdir`.
+
+For safety purposes, `rmdir` only works on empty directories.  Because we left a file in the folder *my_scripts*, the following command will not work.
+
+```
+$ rmdir my_scripts
+```
+
+To override this, you can use `rm -r`.  Please be careful with this command, and only use it on directories that you are certain have nothing you wish to keep.
+
+```
+$ rm -r my_scripts
+$ ls -F
+```
+
+The `-r` in this case indicates that the command is *recursive*, which means it will delete all files and subdirectories and their files and subdirectories and so on and so on.  As you can imagine, this could be a lot of files.
 
 #### Challenges
 
-1. Don’t erase your filesystem!
+1. Don’t erase your entire filesystem!
 
 #### What you learned
 
 1. Making a new directory with `mkdir`
-2. Creating a file
+2. Creating an empty file with `touch`
 3. Changing the name and/or location of a file or directory with `mv`
 4. Duplicating a file or directory with `cp`
 5. Removing a file or directory with `rm` or `rmdir` respectively
-
+6. Be careful when using `rm -r`
 
 #### More info
 
