@@ -1,0 +1,162 @@
+Getting Started with Raspberry Pi
+=================================
+
+#### Objectives
+1. [Build a tiny computer](01-build.md)
+2. [Set it up just so](02-configuring.md)
+3. [Explore the Raspbian desktop](03-raspbian-desktop.md)
+4. **[Learn a little Linux](04-linux-101.md)**
+
+# Learn a little Linux
+
+## Navigating the filesystem
+
+The part of the operating system responsible for managing files 
+and directories is called the **filesystem**.
+
+It organizes our data into files, which hold information, and directories 
+(also called "folders"), which hold files or other directories.
+
+Several commands are frequently used to create, inspect, rename, 
+and delete files and directories.
+
+### Where am I?
+
+To start exploring them, let's open a terminal window:
+
+```
+$
+```
+
+The dollar sign is a prompt, which shows us that the shell is waiting for input.
+
+Let's find out where we are by running a command called `pwd`
+(which stands for "print working directory").
+
+```
+$ pwd
+```
+
+![Linux Filesystem](images/linux_filesystem.png)
+
+Let's have a quick look at how the file system as a whole is organized.
+At the top is the root directory that holds everything else.
+We refer to it using a slash character `/` on its own.
+
+Inside the root directory are several other directories:
+`bin` (which is where some built-in programs are stored),
+`data` (for miscellaneous data files),
+`users` (where users' personal directories are located),
+`tmp` (for temporary files that don't need to be stored long-term),
+and so on.
+
+We know that our current working directory `/users/april` is stored inside `/users`
+because `/users` is the first part of its name.
+Similarly, we know that `/users` is stored inside the root directory `/`
+because its name begins with `/`.
+
+> Notice that there are two meanings for the `/` character.
+> When it appears at the front of a file or directory name,
+> it refers to the root directory. When it appears *inside* a name,
+> it's just a separator.
+
+### What’s here?
+
+We can *list* what is inside our current directory by running `ls`.
+
+```
+$ ls
+```
+
+`ls` prints the names of the files and directories in the current directory in alphabetical order,
+arranged neatly into columns.
+
+We can make its output more comprehensible by using the flag `-F`,
+which tells `ls` to add a trailing `/` to the names of directories:
+
+```
+$ ls -F
+```
+
+### Going somewhere?
+
+We can *change directory* using `cd` followed by a directory name.  This will change our location to a different directory.
+
+```
+$ cd data
+```
+
+`cd` doesn't print anything, but if we run `pwd` after it, we can see where we are now.
+If we run `ls` without arguments now, it lists the contents of our new directory,
+because that's where we now are:
+
+```
+$ pwd
+$ ls
+```
+
+We now know how to go down the directory tree.
+How do we go up?
+
+It’s simple to use `cd ..` to go up one level:
+
+```
+$ pwd
+$ cd ..
+$ pwd
+```
+
+`..` is a special directory name meaning
+"the directory containing this one", or more succinctly, the parent of the current directory.
+
+Another option when changing directories is to list the complete *absolute* path starting with root directory `/`
+
+```
+$ cd /users/look_up_what_is_there_by_default
+```
+
+If you type `cd` by itself, you will go into your home directory
+#### Challenge
+
+1. Find the path of your home directory
+
+#### What you learned
+
+1. How to find what directory you are in using `pwd`
+2. Using `ls -F` to list files in your current working directory
+3. Changing directories using `cd <directory_name>`
+4. How to get to your home directory
+
+#### More info
+
+[TACC Linux Basics Part 1](https://github.com/johnfonner/TACCLinuxBasics/blob/master/shell/01-filedir.md)
+
+
+## Creating and deleting files and directories
+
+https://github.com/johnfonner/TACCLinuxBasics/blob/master/shell/02-create.md
+
+mkdirnano   (or Leafpad)mvcprmrmdir
+
+#### Challenges
+
+1. Don’t erase your filesystem!
+
+#### What you learned
+
+1. Making a new directory with `mkdir`
+2. Creating a file
+3. Changing the name and/or location of a file or directory with `mv`
+4. Duplicating a file or directory with `cp`
+5. Removing a file or directory with `rm` or `rmdir` respectively
+
+
+#### More info
+
+[TACC Linux Basics Part 2](https://github.com/johnfonner/TACCLinuxBasics/blob/master/shell/02-create.md)
+
+## Additional resources
+* [LinuxCommand.org](http://linuxcommand.org/)
+* Linux cheat sheet
+
+![Filesystem Success](images/filesystem_meme.png)
