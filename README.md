@@ -2,8 +2,9 @@
 
 This is my temporary development repository
 
-<html>
-<head>
+<button class="button">Button</button>
+
+
 <style>
 .button {
     background-color: #4CAF50;
@@ -18,6 +19,6 @@ This is my temporary development repository
     cursor: pointer;
 }
 </style>
-</head>
+
 <button class="button">Button</button>
-</html>
+
