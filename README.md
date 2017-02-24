@@ -26,4 +26,8 @@ This is my temporary development repository
 
 <button onclick="location.href='http://www.google.com'" type="button">Go to Google button</button>
 
-[Back to READ ME](www.google.com) | [Next: Installing the SDK](www.yahoo.com)
+[Back to READ ME](http://www.google.com) | 
+
+Booyah
+
+[Next: Installing the SDK](www.yahoo.com) |
