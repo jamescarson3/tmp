@@ -17,17 +17,11 @@ This is my temporary development repository
 </form>
 
 
-a.button {
-    -webkit-appearance: button;
-    -moz-appearance: button;
-    appearance: button;
-
-    text-decoration: none;
-    color: initial;
-}
-
 <a href="http://google.com" class="button">Go to Google CSS</a>
 
 
 
 <input type="button" onclick="location.href='http://google.com';" value="Go to Google JavaScript" />
+
+
+<button onclick="location.href='http://www.google.com'" type="button">Go to Google button</button>
