@@ -24,5 +24,5 @@ This is my temporary development repository
 }
 </style>
 
-<button class="button" href="https://www.cyverse.org">CyVerse</button>
+<a href="https://www.cyverse.org" class="button" >CyVerse</a>
 
