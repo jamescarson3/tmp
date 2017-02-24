@@ -2,6 +2,8 @@
 
 This is my temporary development repository
 
+<button img="docs/cyverse_logo.png"></button>
+
 <button class="button">Button</button>
 
 
