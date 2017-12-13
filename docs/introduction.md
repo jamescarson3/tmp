@@ -1,15 +1,4 @@
-## Monitors
-
-```json
- /$$      /$$                  /$$  /$$
-| $$$    /$$$                 |__/ | $$
-| $$$$  /$$$$ /$$$$$$ /$$$$$$$ /$$/$$$$$$   /$$$$$$  /$$$$$$
-| $$ $$/$$ $$/$$__  $| $$__  $| $|_  $$_/  /$$__  $$/$$__  $$
-| $$  $$$| $| $$  \ $| $$  \ $| $$ | $$   | $$  \ $| $$  \__/
-| $$\  $ | $| $$  | $| $$  | $| $$ | $$ /$| $$  | $| $$
-| $$ \/  | $|  $$$$$$| $$  | $| $$ |  $$$$|  $$$$$$| $$
-|__/     |__/\______/|__/  |__|__/  \___/  \______/|__/
-```
+# Monitors
 
 The Agave Monitors API provides a familiar paradigm for monitoring the usability and 
 accessibility of storage and execution systems you registered with Agave. Similar to 
@@ -22,11 +11,9 @@ history of a given monitor is queryable through the API. As with all resources
 in the Agave Platform, a full event model is available so you can subscribe to 
 event you care about such as failed checks, restored system availability, and system disablement. 
 
-### Creating Monitors
+## Creating Monitors
 
 > Create a new default monitor
-
-
 
 ```plaintext  
 monitors-addupdate -S storage.example.com  
