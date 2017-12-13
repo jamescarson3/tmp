@@ -29,41 +29,43 @@ monitors-addupdate -S storage.example.com
 >  ```
 {: .solution}
 
-> The response will look something like the following:
 
-```json
-{
-    "active": true,
-    "created": "2016-06-03T17:22:59.000-05:00",
-    "frequency": 60,
-    "id": "5024717285821443610-242ac11f-0001-014",
-    "internalUsername": null,
-    "lastCheck": null,
-    "lastSuccess": null,
-    "lastUpdated": "2016-06-03T17:22:59.000-05:00",
-    "nextUpdate": "2016-06-03T18:22:59.000-05:00",
-    "owner": "nryan",
-    "target": "storage.example.com",
-    "updateSystemStatus": false,
-    "_links": {
-        "checks": {
-            "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014/checks"
-        },
-        "notifications": {
-            "href": "https://public.agaveapi.co/notifications/v2/?associatedUuid=5024717285821443610-242ac11f-0001-014"
-        },
-        "owner": {
-            "href": "https://public.agaveapi.co/profiles/v2/nryan"
-        },
-        "self": {
-            "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014"
-        },
-        "system": {
-            "href": "https://public.agaveapi.co/systems/v2/storage.example.com"
-        }
-    }
-}
-```  
+> ### Show response...
+>
+> ```json
+> {
+>     "active": true,
+>     "created": "2016-06-03T17:22:59.000-05:00",
+>     "frequency": 60,
+>     "id": "5024717285821443610-242ac11f-0001-014",
+>     "internalUsername": null,
+>     "lastCheck": null,
+>     "lastSuccess": null,
+>     "lastUpdated": "2016-06-03T17:22:59.000-05:00",
+>     "nextUpdate": "2016-06-03T18:22:59.000-05:00",
+>     "owner": "nryan",
+>     "target": "storage.example.com",
+>     "updateSystemStatus": false,
+>     "_links": {
+>         "checks": {
+>             "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014/checks"
+>         },
+>         "notifications": {
+>             "href": "https://public.agaveapi.co/notifications/v2/?associatedUuid=5024717285821443610-242ac11f-0001-014"
+>         },
+>         "owner": {
+>             "href": "https://public.agaveapi.co/profiles/v2/nryan"
+>         },
+>         "self": {
+>             "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014"
+>         },
+>         "system": {
+>             "href": "https://public.agaveapi.co/systems/v2/storage.example.com"
+>         }
+>     }
+> }
+>  ```
+{: .solution}  
 
 The only piece of information needed to monitor a system is the system ID. Sending a POST request to the Monitors API with a monitor definition containing just the `systemId` field with a valid system ID or UUID will create a monitor that will run hourly health checks starting an hour from when you sent the request.  
 
