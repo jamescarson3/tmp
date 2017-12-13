@@ -34,3 +34,5 @@ Booyah
 
 
 [Go to API Doc test](docs/introduction.md) |
+
+[Go to Handson test](docs/handsontest.md) |
