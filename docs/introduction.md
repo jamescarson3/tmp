@@ -74,6 +74,7 @@ The only piece of information needed to monitor a system is the system ID. Sendi
 
 *You cannot create monitors on systems for which you do not have a role.*
 
+---
 
 ## Custom frequency and start time
 
@@ -130,67 +131,81 @@ monitors-addupdate -S storage.example.com -I 15
 > ```
 {: .solution} 
 
-If you need the monitor to run more frequently, you can customize the frequency and time at which a monitor runs by including the `interval` and `startTime` fields in your monitor definition. By providing a time expression in the `interval` field, you can control the frequency at which a monitor runs. The maximum interval you can set for a monitor is one month. The minimum interval varies from tenant to tenant, but is generally no less than 5 minutes. 
+If you need the monitor to run more frequently, you can customize the frequency and time at which a monitor runs by including the `interval` and `startTime` fields in your monitor definition. 
 
-<aside class="notice">The minimum interval at which a monitor can run varies from tenant to tenant, but is generally not less than 5 minutes.</aside>
+By providing a time expression in the `interval` field, you can control the frequency at which a monitor runs. The maximum interval you can set for a monitor is one month. The minimum interval varies from tenant to tenant, but is generally no less than 5 minutes. 
 
-The `startTime` field allows you to schedule when you would like Agave to start the monitor on your system. Any date or time expression representing a moment between the current time and one month from then is acceptable. If you do not specify a value for `startTime`, Agave will add the value of `interval` to the current time and use that as the `startTIme`. Setting stop times or "off hours" is not currently supported.
+The `startTime` field allows you to schedule when you would like Agave to start the monitor on your system. Any date or time expression representing a moment between the current time and one month from then is acceptable. If you do not specify a value for `startTime`, Agave will add the value of `interval` to the current time and use that as the `startTIme`. 
+
+*Setting stop times or "off hours" is not currently supported.*
+
+---
 
 ## Automating system status updates
 
 Create a monitor that updates system status on change
 
-```shell
-curl -sk -H "Authorization: Bearer $AUTH_TOKEN" \
-     -H "Content-Type: application-json" \
-     -X POST \
-     --data-binary '{"target": "storage.example.com","frequency":15,"updateSystemStatus"=true}' \
-     https://public.agaveapi.co/monitors/v2/
-```
-
 ```plaintext
 monitors-addupdate -S storage.example.com -I 15 -U true
 ```  
 
-> The response will look something like the following:
+> ### Show cURL &nbsp;&nbsp;
+>
+> ```shell
+> curl -sk -H "Authorization: Bearer $AUTH_TOKEN" \
+>      -H "Content-Type: application-json" \
+>      -X POST \
+>      --data-binary '{"target": "storage.example.com","frequency":15,"updateSystemStatus"=true}' \
+>      https://public.agaveapi.co/monitors/v2/
+> ```
+{: .solution} 
 
-```json  
-{
-    "active": true,
-    "created": "2016-06-03T17:22:59.000-05:00",
-    "frequency": 15,
-    "id": "5024717285821443610-242ac11f-0001-014",
-    "internalUsername": null,
-    "lastCheck": null,
-    "lastSuccess": null,
-    "lastUpdated": "2016-06-03T17:22:59.000-05:00",
-    "nextUpdate": "2016-06-03T17:37:59.000-05:00",
-    "owner": "nryan",
-    "target": "storage.example.com",
-    "updateSystemStatus": true,
-    "_links": {
-        "checks": {
-            "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014/checks"
-        },
-        "notifications": {
-            "href": "https://public.agaveapi.co/notifications/v2/?associatedUuid=5024717285821443610-242ac11f-0001-014"
-        },
-        "owner": {
-            "href": "https://public.agaveapi.co/profiles/v2/nryan"
-        },
-        "self": {
-            "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014"
-        },
-        "system": {
-            "href": "https://public.agaveapi.co/systems/v2/storage.example.com"
-        }
-    }
-}
-```  
+> ### Show response &nbsp;&nbsp;
+>
+> ```json 
+> {
+>     "active": true,
+>     "created": "2016-06-03T17:22:59.000-05:00",
+>     "frequency": 15,
+>     "id": "5024717285821443610-242ac11f-0001-014",
+>     "internalUsername": null,
+>     "lastCheck": null,
+>     "lastSuccess": null,
+>     "lastUpdated": "2016-06-03T17:22:59.000-05:00",
+>     "nextUpdate": "2016-06-03T17:37:59.000-05:00",
+>     "owner": "nryan",
+>     "target": "storage.example.com",
+>     "updateSystemStatus": true,
+>     "_links": {
+>         "checks": {
+>             "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014/checks"
+>         },
+>         "notifications": {
+>             "href": "https://public.agaveapi.co/notifications/v2/?associatedUuid=5024717285821443610-242ac11f-0001-014"
+>         },
+>         "owner": {
+>             "href": "https://public.agaveapi.co/profiles/v2/nryan"
+>         },
+>         "self": {
+>             "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014"
+>         },
+>         "system": {
+>             "href": "https://public.agaveapi.co/systems/v2/storage.example.com"
+>         }
+>     }
+> }
+> ```  
+{: .solution} 
 
-In the section on Events and notifications, we cover the ways in which you can get alerted about events pertaining to a monitor. Here we will simply point out that a convenience field, `updateStatus`, is built into all monitors. Setting this field to `true` will authorize Agave to update the status of the monitored system based on the result of the monitor checks. This is a convenient way to ensure that the status value in your system description matches the actual operational status of the system.
+In the section on Events and notifications, we cover the ways in which you can get alerted about events 
+pertaining to a monitor. Here we will simply point out that a convenience field, `updateStatus`, 
+is built into all monitors. Setting this field to `true` will authorize Agave to update the status 
+of the monitored system based on the result of the monitor checks. This is a convenient way to 
+ensure that the status value in your system description matches the actual operational status of the system.
 
-<aside class="notice">To automatically update your system status when a monitor changes status, set <code class="highlight">updateStatus</code> to "true" in your monitor definition.</aside>
+*To automatically update your system status when a monitor changes status, set `updateStatus` to `true` in your monitor definition.*
+
+---
 
 ## Updating an existing monitor
 
