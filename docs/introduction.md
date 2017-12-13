@@ -10,13 +10,12 @@ proactive tests on availability (ping), accessibility (authentication), and
 functionality (listing or echo). Each check result is persisted and the check 
 history of a given monitor is queryable through the API. 
 
-As with all resources 
-in the Agave Platform, a full event model is available so you can subscribe to 
+As with all resources in the Agave Platform, a full event model is available so you can subscribe to 
 event you care about such as failed checks, restored system availability, and system disablement. 
 
 ## Creating Monitors
 
-**Create a new default monitor**
+Create a new default monitor
 
 ```plaintext  
 monitors-addupdate -S storage.example.com  
@@ -74,9 +73,9 @@ The only piece of information needed to monitor a system is the system ID. Sendi
 
 <aside class="notice">You cannot create monitors on systems for which you do not have a role.</aside>
 
-### Custom frequency and start time
+## Custom frequency and start time
 
-> Create a monitor with a custom frequency
+Create a monitor with a custom frequency
 
 ```shell
 curl -sk -H "Authorization: Bearer $AUTH_TOKEN" \
@@ -131,9 +130,9 @@ If you need the monitor to run more frequently, you can customize the frequency 
 
 The `startTime` field allows you to schedule when you would like Agave to start the monitor on your system. Any date or time expression representing a moment between the current time and one month from then is acceptable. If you do not specify a value for `startTime`, Agave will add the value of `interval` to the current time and use that as the `startTIme`. Setting stop times or "off hours" is not currently supported.
 
-### Automating system status updates
+## Automating system status updates
 
-> Create a monitor that updates system status on change
+Create a monitor that updates system status on change
 
 ```shell
 curl -sk -H "Authorization: Bearer $AUTH_TOKEN" \
@@ -187,9 +186,9 @@ In the section on Events and notifications, we cover the ways in which you can g
 
 <aside class="notice">To automatically update your system status when a monitor changes status, set <code class="highlight">updateStatus</code> to "true" in your monitor definition.</aside>
 
-### Updating an existing monitor
+## Updating an existing monitor
 
-> Update an existing monitor
+Update an existing monitor
 
 ```shell
 curl -sk -H "Authorization: Bearer $AUTH_TOKEN" \
@@ -241,9 +240,9 @@ monitors-addupdate -S storage.example.com -I 5 -U false 5024717285821443610-242a
 
 Monitors can be managed by making traditional GET, POST, and DELETE operations. When updating a monitor, pay attention to the response because the time of the next check will change. In fact, any change to a monitor will recalculate the time when the next health check will run. 
 
-### Disabling an existing monitor
+## Disabling an existing monitor
 
-> Disable an existing monitor
+Disable an existing monitor
 
 ```shell
 curl -sk -H "Authorization: Bearer $AUTH_TOKEN"
@@ -295,9 +294,9 @@ monitors-disable 5024717285821443610-242ac11f-0001-014
 There may be times when you need to pause a monitor. If your system has scheduled maintenance periods, you may want to disable the monitor until the maintenance period ends. You can do this by making a PUT request on a monitor with the a field name `action` set to "disabled". While disabled, all health checks will be skipped. 
 
 
-### Enabling an existing monitor
+## Enabling an existing monitor
 
-> Enable an existing monitor
+Enable an existing monitor
 
 ```shell
 curl -sk -H "Authorization: Bearer $AUTH_TOKEN"
@@ -346,9 +345,9 @@ monitors-enable 5024717285821443610-242ac11f-0001-014
 
 Similarly, to enable a monitor, make a PUT request with the a field name `action` set to "enabled". Once reenabled, the monitor will resume its previous check schedule as specified in the `nextUpdate` field, or immediately if that time has already expired.
 
-### Deleting a monitor
+## Deleting a monitor
 
-> Deleting an existing monitor
+Deleting an existing monitor
 
 ```shell
 curl -sk -H "Authorization: Bearer $AUTH_TOKEN"
@@ -367,9 +366,9 @@ To delete a monitor, simply make a DELETE request on the monitor.
 
 <aside class="notice"> Unlike systems, deleting a monitor will permanently delete the monitor and all its history, checks, etc.</aside>
 
-### Monitor Checks
+## Monitor Checks
 
-> Listing past monitor checks
+Listing past monitor checks
 
 ```shell
 curl -sk -H "Authorization: Bearer $AUTH_TOKEN"
@@ -411,9 +410,9 @@ Each instance of a monitor testing a system is called a Check. Monitor Checks ar
 Each monitor check has a unique ID and represents a formal, addressable resource in the API. Here we see a typical successful monitor check. Checks will have one of two states: PASSED or FAILED. Successful monitors have a status of PASSED and no message. Unsuccessful monitors have a status of FAILED and a message describing why they failed.
 
 
-### Searching check history
+## Searching check history
 
-> Searching check history for a monitor
+Searching check history for a monitor
 
 ```shell
 curl -sk -H "Authorization: Bearer $AUTH_TOKEN" \   
@@ -453,7 +452,7 @@ monitors-checks-search -v -l 1 \
 
 Long-running monitor checks can build up a large history which can become prohibitive to page through. When generating graphs and looking for specific incidents, you can search for specific checks based on `result`, `startTime`, `endTime`, `type`, and `id`. The standard JSON SQL search syntax used across the rest of the Science APIs is supported for monitor checks as well.
 
-### Manually running a check
+## Manually running a check
 
 > Forcing a monitor check to run
 
@@ -495,13 +494,13 @@ If you need to verify the accessibility of your system, or behavior of your moni
 
 <aside class="notice">When manually forcing a monitor to run, you are still subject to the same minimum check interval configured for your tenant.</aside>
 
-### Permissions
+## Permissions
 
 At this time, monitors do not have permissions associated with them.
 
-### History
+## History
 
-> List the change history of a monitor
+List the change history of a monitor
 
 ```shell
 curl -sk -H "Authorization: Bearer $AUTH_TOKEN" \
@@ -538,7 +537,7 @@ monitors-history -v 5024717285821443610-242ac11f-0001-014
 
 A full history of the lifecycle of a monitor is available via the monitor history collection. Here you can list events that have occurred during the life of the monitor.
 
-### Events
+## Events
 
 The following events will be thrown by the Monitors API.
 
