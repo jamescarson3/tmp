@@ -1,13 +1,16 @@
 # Monitors
 
 The Agave Monitors API provides a familiar paradigm for monitoring the usability and 
-accessibility of storage and execution systems you registered with Agave. Similar to 
-services like Pingdom, Pagerduty, and WebCron, the Monitors API allows you to to 
+accessibility of storage and execution systems you registered with Agave. 
+
+Similar to services like Pingdom, Pagerduty, and WebCron, the Monitors API allows you to to 
 create regular health checks on a registered system. Unlike standard uptime services, 
 Agave will check that your system is responsive and accessible by performing 
 proactive tests on availability (ping), accessibility (authentication), and 
 functionality (listing or echo). Each check result is persisted and the check 
-history of a given monitor is queryable through the API. As with all resources 
+history of a given monitor is queryable through the API. 
+
+As with all resources 
 in the Agave Platform, a full event model is available so you can subscribe to 
 event you care about such as failed checks, restored system availability, and system disablement. 
 
@@ -30,7 +33,7 @@ monitors-addupdate -S storage.example.com
 {: .solution}
 
 
-> ### Show response...
+> ### Show response &nbsp;&nbsp;
 >
 > ```json
 > {
