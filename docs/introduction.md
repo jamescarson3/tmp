@@ -19,7 +19,7 @@ event you care about such as failed checks, restored system availability, and sy
 monitors-addupdate -S storage.example.com  
 ```  
 
-> ### Show cURL...
+> ### Show cURL &nbsp;&nbsp;
 >
 > ```shell  
 > curl -sk -H "Authorization: Bearer $AUTH_TOKEN" \
