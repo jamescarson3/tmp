@@ -19,7 +19,7 @@ event you care about such as failed checks, restored system availability, and sy
 monitors-addupdate -S storage.example.com  
 ```  
 
-> ### cURL
+> ### Show cURL >
 > 
 > Blah
 >
