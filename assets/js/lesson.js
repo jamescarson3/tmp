@@ -4,7 +4,7 @@ $(".solution").click(function(event) {
         $(event.target).filter(".fold-unfold").size() > 0;
     if (trigger) {
         $(">*:not(h3)", this).toggle(400);
-        $(">h2>span.fold-unfold", this).toggleClass("fa-caret-square-o-down fa-caret-square-o-up");
+        $(">h3>span.fold-unfold", this).toggleClass("fa-caret-square-o-down fa-caret-square-o-up");
         event.stopPropagation();
     }
 });
