@@ -31,3 +31,6 @@ This is my temporary development repository
 Booyah
 
 [Next: Installing the SDK](www.yahoo.com) |
+
+
+[Go to API Doc test](docs/introduction.md) |
