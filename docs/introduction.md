@@ -13,6 +13,8 @@ history of a given monitor is queryable through the API.
 As with all resources in the Agave Platform, a full event model is available so you can subscribe to 
 event you care about such as failed checks, restored system availability, and system disablement. 
 
+---
+
 ## Creating Monitors
 
 Create a new default monitor
