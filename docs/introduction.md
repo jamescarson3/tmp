@@ -31,7 +31,6 @@ monitors-addupdate -S storage.example.com
 >  ```
 {: .solution}
 
-
 > ### Show response &nbsp;&nbsp;
 >
 > ```json
@@ -71,58 +70,63 @@ monitors-addupdate -S storage.example.com
 
 The only piece of information needed to monitor a system is the system ID. Sending a POST request to the Monitors API with a monitor definition containing just the `systemId` field with a valid system ID or UUID will create a monitor that will run hourly health checks starting an hour from when you sent the request.  
 
-<aside class="notice">You cannot create monitors on systems for which you do not have a role.</aside>
+*You cannot create monitors on systems for which you do not have a role.*
+
 
 ## Custom frequency and start time
 
 Create a monitor with a custom frequency
 
-```shell
-curl -sk -H "Authorization: Bearer $AUTH_TOKEN" \
-     -H "Content-Type: application-json" \
-     -X POST --data-binary '{"target": "storage.example.com","frequency":15}' \
-     https://public.agaveapi.co/monitors/v2/
-```
-
 ```plaintext
 monitors-addupdate -S storage.example.com -I 15
 ```
 
-> The response will look something like the following:
+> ### Show cURL &nbsp;&nbsp;
+>
+> ```shell
+> curl -sk -H "Authorization: Bearer $AUTH_TOKEN" \
+>      -H "Content-Type: application-json" \
+>      -X POST --data-binary '{"target": "storage.example.com","frequency":15}' \
+>      https://public.agaveapi.co/monitors/v2/
+> ```
+{: .solution}
 
-```json
-{
-    "_links": {
-        "checks": {
-            "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014/checks"
-        },
-        "notifications": {
-            "href": "https://public.agaveapi.co/notifications/v2/?associatedUuid=5024717285821443610-242ac11f-0001-014"
-        },
-        "owner": {
-            "href": "https://public.agaveapi.co/profiles/v2/nryan"
-        },
-        "self": {
-            "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014"
-        },
-        "system": {
-            "href": "https://public.agaveapi.co/systems/v2/storage.example.com"
-        }
-    },
-    "active": true,
-    "created": "2016-06-03T17:22:59.000-05:00",
-    "frequency": 15,
-    "id": "5024717285821443610-242ac11f-0001-014",
-    "internalUsername": null,
-    "lastCheck": null,
-    "lastSuccess": null,
-    "lastUpdated": "2016-06-03T17:22:59.000-05:00",
-    "nextUpdate": "2016-06-03T17:37:59.000-05:00",
-    "owner": "nryan",
-    "target": "storage.example.com",
-    "updateSystemStatus": false
-}
-```  
+> ### Show response &nbsp;&nbsp;
+>
+> ```json
+> {
+>     "_links": {
+>         "checks": {
+>             "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014/checks"
+>         },
+>         "notifications": {
+>             "href": "https://public.agaveapi.co/notifications/v2/?associatedUuid=5024717285821443610-242ac11f-0001-014"
+>         },
+>         "owner": {
+>             "href": "https://public.agaveapi.co/profiles/v2/nryan"
+>         },
+>         "self": {
+>             "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014"
+>         },
+>         "system": {
+>             "href": "https://public.agaveapi.co/systems/v2/storage.example.com"
+>         }
+>     },
+>     "active": true,
+>     "created": "2016-06-03T17:22:59.000-05:00",
+>     "frequency": 15,
+>     "id": "5024717285821443610-242ac11f-0001-014",
+>     "internalUsername": null,
+>     "lastCheck": null,
+>     "lastSuccess": null,
+>     "lastUpdated": "2016-06-03T17:22:59.000-05:00",
+>     "nextUpdate": "2016-06-03T17:37:59.000-05:00",
+>     "owner": "nryan",
+>     "target": "storage.example.com",
+>     "updateSystemStatus": false
+> }
+> ```
+{: .solution} 
 
 If you need the monitor to run more frequently, you can customize the frequency and time at which a monitor runs by including the `interval` and `startTime` fields in your monitor definition. By providing a time expression in the `interval` field, you can control the frequency at which a monitor runs. The maximum interval you can set for a monitor is one month. The minimum interval varies from tenant to tenant, but is generally no less than 5 minutes. 
 
