@@ -19,16 +19,14 @@ event you care about such as failed checks, restored system availability, and sy
 monitors-addupdate -S storage.example.com  
 ```  
 
-> ### Show cURL >
-> 
-> Blah
+> ### Show cURL...
 >
-> ~~~shell  
+> ```shell  
 > curl -sk -H "Authorization: Bearer $AUTH_TOKEN" \
 >      -H "Content-Type: application-json" \
 >      -X POST --data-binary '{"target": "storage.example.com"}' \
 >      https://public.agaveapi.co/monitors/v2/
->  ~~~
+>  ```
 {: .solution}
 
 > The response will look something like the following:
