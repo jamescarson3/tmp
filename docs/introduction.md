@@ -13,7 +13,7 @@ event you care about such as failed checks, restored system availability, and sy
 
 ## Creating Monitors
 
-* Create a new default monitor *
+**Create a new default monitor**
 
 ```plaintext  
 monitors-addupdate -S storage.example.com  
