@@ -17,7 +17,7 @@ event you care about such as failed checks, restored system availability, and sy
 
 ## Creating Monitors
 
-Create a new default monitor
+Create a new default monitor with the following CLI command:
 
 ```plaintext  
 monitors-addupdate -S storage.example.com  
@@ -78,7 +78,7 @@ The only piece of information needed to monitor a system is the system ID. Sendi
 
 ## Custom frequency and start time
 
-Create a monitor with a custom frequency
+Create a monitor with a custom frequency with the following CLI command:
 
 ```plaintext
 monitors-addupdate -S storage.example.com -I 15
@@ -143,7 +143,7 @@ The `startTime` field allows you to schedule when you would like Agave to start 
 
 ## Automating system status updates
 
-Create a monitor that updates system status on change
+Create a monitor that updates system status on change with the following CLI command:
 
 ```plaintext
 monitors-addupdate -S storage.example.com -I 15 -U true
