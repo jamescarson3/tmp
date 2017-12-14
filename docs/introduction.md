@@ -211,16 +211,16 @@ ensure that the status value in your system description matches the actual opera
 
 Update an existing monitor
 
+```plaintext
+monitors-addupdate -S storage.example.com -I 5 -U false 5024717285821443610-242ac11f-0001-014
+```
+
 ```shell
 curl -sk -H "Authorization: Bearer $AUTH_TOKEN" \
      -H "Content-Type: application-json" \
      -X POST \
      --data-binary '{"target": "storage.example.com","frequency":5,"updateSystemStatus"=false}' \
      https://public.agaveapi.co/monitors/v2/5024717285821443610-242ac11f-0001-014
-```
-
-```plaintext
-monitors-addupdate -S storage.example.com -I 5 -U false 5024717285821443610-242ac11f-0001-014
 ```
 
 > The response will look something like the following:
@@ -261,19 +261,21 @@ monitors-addupdate -S storage.example.com -I 5 -U false 5024717285821443610-242a
 
 Monitors can be managed by making traditional GET, POST, and DELETE operations. When updating a monitor, pay attention to the response because the time of the next check will change. In fact, any change to a monitor will recalculate the time when the next health check will run. 
 
+---
+
 ## Disabling an existing monitor
 
 Disable an existing monitor
+
+```plaintext
+monitors-disable 5024717285821443610-242ac11f-0001-014
+```
 
 ```shell
 curl -sk -H "Authorization: Bearer $AUTH_TOKEN"
     -H "Content-Type: application/json"
     -X PUT --data-binary '{"action": "disable"}'
     https://public.agaveapi.co/monitors/v2/5024717285821443610-242ac11f-0001-014
-```
-
-```plaintext
-monitors-disable 5024717285821443610-242ac11f-0001-014
 ```
 
 > The response will look something like the following:
@@ -314,20 +316,21 @@ monitors-disable 5024717285821443610-242ac11f-0001-014
 
 There may be times when you need to pause a monitor. If your system has scheduled maintenance periods, you may want to disable the monitor until the maintenance period ends. You can do this by making a PUT request on a monitor with the a field name `action` set to "disabled". While disabled, all health checks will be skipped. 
 
+---
 
 ## Enabling an existing monitor
 
 Enable an existing monitor
+
+```plaintext
+monitors-enable 5024717285821443610-242ac11f-0001-014
+```
 
 ```shell
 curl -sk -H "Authorization: Bearer $AUTH_TOKEN"
     -H "Content-Type: application/json"
     -X PUT --data-binary '{"action": "enable"}'
     https://public.agaveapi.co/monitors/v2/5024717285821443610-242ac11f-0001-014
-```
-
-```plaintext
-monitors-enable 5024717285821443610-242ac11f-0001-014
 ```
 
 ```json
@@ -366,9 +369,15 @@ monitors-enable 5024717285821443610-242ac11f-0001-014
 
 Similarly, to enable a monitor, make a PUT request with the a field name `action` set to "enabled". Once reenabled, the monitor will resume its previous check schedule as specified in the `nextUpdate` field, or immediately if that time has already expired.
 
+---
+
 ## Deleting a monitor
 
 Deleting an existing monitor
+
+```plaintext
+monitors-delete 5024717285821443610-242ac11f-0001-014
+```
 
 ```shell
 curl -sk -H "Authorization: Bearer $AUTH_TOKEN"
@@ -377,29 +386,27 @@ curl -sk -H "Authorization: Bearer $AUTH_TOKEN"
     https://public.agaveapi.co/monitors/v2/5024717285821443610-242ac11f-0001-014
 ```
 
-```plaintext
-monitors-delete 5024717285821443610-242ac11f-0001-014
-```
-
 > An empty response will be returned
 
 To delete a monitor, simply make a DELETE request on the monitor.
 
 <aside class="notice"> Unlike systems, deleting a monitor will permanently delete the monitor and all its history, checks, etc.</aside>
 
+---
+
 ## Monitor Checks
 
 Listing past monitor checks
 
-```shell
-curl -sk -H "Authorization: Bearer $AUTH_TOKEN"
-    'https://public.agaveapi.co/monitors/v2/5024717285821443610-242ac11f-0001-014/checks?limit=1'
-```
-
 ```plaintext
 monitors-checks-list -v -l 1
     -M 5024717285821443610-242ac11f-0001-014
-```  
+``` 
+
+```shell
+curl -sk -H "Authorization: Bearer $AUTH_TOKEN"
+    'https://public.agaveapi.co/monitors/v2/5024717285821443610-242ac11f-0001-014/checks?limit=1'
+``` 
 
 > The response will look something like the following:
 
@@ -430,20 +437,21 @@ Each instance of a monitor testing a system is called a Check. Monitor Checks ar
 
 Each monitor check has a unique ID and represents a formal, addressable resource in the API. Here we see a typical successful monitor check. Checks will have one of two states: PASSED or FAILED. Successful monitors have a status of PASSED and no message. Unsuccessful monitors have a status of FAILED and a message describing why they failed.
 
+---
 
 ## Searching check history
 
 Searching check history for a monitor
 
-```shell
-curl -sk -H "Authorization: Bearer $AUTH_TOKEN" \   
-    'https://public.agaveapi.co/monitors/v2/5024717285821443610-242ac11f-0001-014/checks?limit=1&result.eq=PASSED'
-```  
-
 ```plaintext
 monitors-checks-search -v -l 1 \
     -M 5024717285821443610-242ac11f-0001-014 \
     result.eq=PASSED
+```  
+
+```shell
+curl -sk -H "Authorization: Bearer $AUTH_TOKEN" \   
+    'https://public.agaveapi.co/monitors/v2/5024717285821443610-242ac11f-0001-014/checks?limit=1&result.eq=PASSED'
 ```  
 
 > The response will look something like the following:
@@ -473,9 +481,15 @@ monitors-checks-search -v -l 1 \
 
 Long-running monitor checks can build up a large history which can become prohibitive to page through. When generating graphs and looking for specific incidents, you can search for specific checks based on `result`, `startTime`, `endTime`, `type`, and `id`. The standard JSON SQL search syntax used across the rest of the Science APIs is supported for monitor checks as well.
 
+---
+
 ## Manually running a check
 
 > Forcing a monitor check to run
+
+```plaintext  
+monitors-fire -v 5024717285821443610-242ac11f-0001-014  
+```  
 
 ```shell
 curl -sk -H "Authorization: Bearer $AUTH_TOKEN" \
@@ -483,10 +497,6 @@ curl -sk -H "Authorization: Bearer $AUTH_TOKEN" \
      -X POST --data-binary '{}' \
     https://public.agaveapi.co/monitors/v2/5024717285821443610-242ac11f-0001-014/checks
 ```
-
-```plaintext  
-monitors-fire -v 5024717285821443610-242ac11f-0001-014  
-```  
 
 > The response will look something like the following:
 
@@ -515,23 +525,27 @@ If you need to verify the accessibility of your system, or behavior of your moni
 
 <aside class="notice">When manually forcing a monitor to run, you are still subject to the same minimum check interval configured for your tenant.</aside>
 
+---
+
 ## Permissions
 
 At this time, monitors do not have permissions associated with them.
 
+---
+
 ## History
 
 List the change history of a monitor
+
+```plaintext
+monitors-history -v 5024717285821443610-242ac11f-0001-014
+```
 
 ```shell
 curl -sk -H "Authorization: Bearer $AUTH_TOKEN" \
      -H "Content-Type: application-json" \
      -X POST --data-binary '{}' \
     https://public.agaveapi.co/monitors/v2/5024717285821443610-242ac11f-0001-014/history
-```
-
-```plaintext
-monitors-history -v 5024717285821443610-242ac11f-0001-014
 ```
 
 > The response will look something like the following:
@@ -557,6 +571,8 @@ monitors-history -v 5024717285821443610-242ac11f-0001-014
 ```
 
 A full history of the lifecycle of a monitor is available via the monitor history collection. Here you can list events that have occurred during the life of the monitor.
+
+---
 
 ## Events
 
