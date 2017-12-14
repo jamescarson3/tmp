@@ -214,7 +214,7 @@ Update an existing monitor
 ```plaintext
 monitors-addupdate -S storage.example.com -I 5 -U false 5024717285821443610-242ac11f-0001-014
 ```
-
+### Show cURL &nbsp;&nbsp;
 ```shell
 curl -sk -H "Authorization: Bearer $AUTH_TOKEN" \
      -H "Content-Type: application-json" \
@@ -222,6 +222,7 @@ curl -sk -H "Authorization: Bearer $AUTH_TOKEN" \
      --data-binary '{"target": "storage.example.com","frequency":5,"updateSystemStatus"=false}' \
      https://public.agaveapi.co/monitors/v2/5024717285821443610-242ac11f-0001-014
 ```
+{: .solution} 
 
 > The response will look something like the following:
 
