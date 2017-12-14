@@ -217,48 +217,48 @@ monitors-addupdate -S storage.example.com -I 5 -U false 5024717285821443610-242a
 > ### Show cURL &nbsp;&nbsp;
 >
 > ```shell
-curl -sk -H "Authorization: Bearer $AUTH_TOKEN" \
-     -H "Content-Type: application-json" \
-     -X POST \
-     --data-binary '{"target": "storage.example.com","frequency":5,"updateSystemStatus"=false}' \
-     https://public.agaveapi.co/monitors/v2/5024717285821443610-242ac11f-0001-014
-```
+> curl -sk -H "Authorization: Bearer $AUTH_TOKEN" \
+>      -H "Content-Type: application-json" \
+>      -X POST \
+>      --data-binary '{"target": "storage.example.com","frequency":5,"updateSystemStatus"=false}' \
+>      https://public.agaveapi.co/monitors/v2/5024717285821443610-242ac11f-0001-014
+> ```
 {: .solution} 
 
-> The response will look something like the following:
-
-```json  
-{
-    "active": true,
-    "created": "2016-06-03T17:22:59.000-05:00",
-    "frequency": 15,
-    "id": "5024717285821443610-242ac11f-0001-014",
-    "internalUsername": null,
-    "lastCheck": null,
-    "lastSuccess": null,
-    "lastUpdated": "2016-06-03T17:24:59.000-05:00",
-    "nextUpdate": "2016-06-03T17:29:59.000-05:00",
-    "owner": "nryan",
-    "target": "storage.example.com",
-    "updateSystemStatus": false,
-    "_links": {
-        "checks": {
-            "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014/checks"
-        },
-        "notifications": {
-            "href": "https://public.agaveapi.co/notifications/v2/?associatedUuid=5024717285821443610-242ac11f-0001-014"
-        },
-        "owner": {
-            "href": "https://public.agaveapi.co/profiles/v2/nryan"
-        },
-        "self": {
-            "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014"
-        },
-        "system": {
-            "href": "https://public.agaveapi.co/systems/v2/storage.example.com"
-        }
-    }
-}
+> ### Show response &nbsp;&nbsp;
+>
+> ```json  
+> {
+>     "active": true,
+>     "created": "2016-06-03T17:22:59.000-05:00",
+>     "frequency": 15,
+>     "id": "5024717285821443610-242ac11f-0001-014",
+>     "internalUsername": null,
+>     "lastCheck": null,
+>     "lastSuccess": null,
+>     "lastUpdated": "2016-06-03T17:24:59.000-05:00",
+>     "nextUpdate": "2016-06-03T17:29:59.000-05:00",
+>     "owner": "nryan",
+>     "target": "storage.example.com",
+>     "updateSystemStatus": false,
+>     "_links": {
+>         "checks": {
+>             "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014/checks"
+>         },
+>         "notifications": {
+>             "href": "https://public.agaveapi.co/notifications/v2/?associatedUuid=5024717285821443610-242ac11f-0001-014"
+>         },
+>         "owner": {
+>             "href": "https://public.agaveapi.co/profiles/v2/nryan"
+>         },
+>         "self": {
+>             "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014"
+>         },
+>         "system": {
+>             "href": "https://public.agaveapi.co/systems/v2/storage.example.com"
+>         }
+>     }
+> }
 > ```
 {: .solution} 
 
@@ -277,47 +277,47 @@ monitors-disable 5024717285821443610-242ac11f-0001-014
 > ### Show cURL &nbsp;&nbsp;
 >
 > ```shell
-curl -sk -H "Authorization: Bearer $AUTH_TOKEN"
-    -H "Content-Type: application/json"
-    -X PUT --data-binary '{"action": "disable"}'
-    https://public.agaveapi.co/monitors/v2/5024717285821443610-242ac11f-0001-014
+> curl -sk -H "Authorization: Bearer $AUTH_TOKEN"
+>     -H "Content-Type: application/json"
+>     -X PUT --data-binary '{"action": "disable"}'
+>     https://public.agaveapi.co/monitors/v2/5024717285821443610-242ac11f-0001-014
 > ```
 {: .solution}
 
 > ### Show response &nbsp;&nbsp;
 >
 > ```json
-{
-    "active": false,
-    "created": "2016-06-03T17:22:59.000-05:00",
-    "frequency": 15,
-    "id": "5024717285821443610-242ac11f-0001-014",
-    "internalUsername": null,
-    "lastCheck": null,
-    "lastSuccess": null,
-    "lastUpdated": "2016-06-03T17:24:59.000-05:00",
-    "nextUpdate": "2016-06-03T17:29:59.000-05:00",
-    "owner": "nryan",
-    "target": "storage.example.com",
-    "updateSystemStatus": false,
-    "_links": {
-        "checks": {
-            "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014/checks"
-        },
-        "notifications": {
-            "href": "https://public.agaveapi.co/notifications/v2/?associatedUuid=5024717285821443610-242ac11f-0001-014"
-        },
-        "owner": {
-            "href": "https://public.agaveapi.co/profiles/v2/nryan"
-        },
-        "self": {
-            "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014"
-        },
-        "system": {
-            "href": "https://public.agaveapi.co/systems/v2/storage.example.com"
-        }
-    }
-}
+> {
+>     "active": false,
+>     "created": "2016-06-03T17:22:59.000-05:00",
+>     "frequency": 15,
+>     "id": "5024717285821443610-242ac11f-0001-014",
+>     "internalUsername": null,
+>     "lastCheck": null,
+>     "lastSuccess": null,
+>     "lastUpdated": "2016-06-03T17:24:59.000-05:00",
+>     "nextUpdate": "2016-06-03T17:29:59.000-05:00",
+>     "owner": "nryan",
+>     "target": "storage.example.com",
+>     "updateSystemStatus": false,
+>     "_links": {
+>         "checks": {
+>             "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014/checks"
+>         },
+>         "notifications": {
+>             "href": "https://public.agaveapi.co/notifications/v2/?associatedUuid=5024717285821443610-242ac11f-0001-014"
+>         },
+>         "owner": {
+>             "href": "https://public.agaveapi.co/profiles/v2/nryan"
+>         },
+>         "self": {
+>             "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014"
+>         },
+>         "system": {
+>             "href": "https://public.agaveapi.co/systems/v2/storage.example.com"
+>         }
+>     }
+> }
 > ```
 {: .solution}
 
@@ -336,47 +336,47 @@ monitors-enable 5024717285821443610-242ac11f-0001-014
 > ### Show cURL &nbsp;&nbsp;
 >
 > ```shell
-curl -sk -H "Authorization: Bearer $AUTH_TOKEN"
-    -H "Content-Type: application/json"
-    -X PUT --data-binary '{"action": "enable"}'
-    https://public.agaveapi.co/monitors/v2/5024717285821443610-242ac11f-0001-014
+> curl -sk -H "Authorization: Bearer $AUTH_TOKEN"
+>     -H "Content-Type: application/json"
+>     -X PUT --data-binary '{"action": "enable"}'
+>     https://public.agaveapi.co/monitors/v2/5024717285821443610-242ac11f-0001-014
 > ```
 {: .solution}
 
 > ### Show response &nbsp;&nbsp;
 >
 > ```json
-{
-    "active": true,
-    "created": "2016-06-03T17:22:59.000-05:00",
-    "frequency": 15,
-    "id": "5024717285821443610-242ac11f-0001-014",
-    "internalUsername": null,
-    "lastCheck": null,
-    "lastSuccess": null,
-    "lastUpdated": "2016-06-03T17:24:59.000-05:00",
-    "nextUpdate": "2016-06-03T17:29:59.000-05:00",
-    "owner": "nryan",
-    "target": "storage.example.com",
-    "updateSystemStatus": false,
-    "_links": {
-        "checks": {
-            "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014/checks"
-        },
-        "notifications": {
-            "href": "https://public.agaveapi.co/notifications/v2/?associatedUuid=5024717285821443610-242ac11f-0001-014"
-        },
-        "owner": {
-            "href": "https://public.agaveapi.co/profiles/v2/nryan"
-        },
-        "self": {
-            "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014"
-        },
-        "system": {
-            "href": "https://public.agaveapi.co/systems/v2/storage.example.com"
-        }
-    }
-}
+> {
+>     "active": true,
+>     "created": "2016-06-03T17:22:59.000-05:00",
+>     "frequency": 15,
+>     "id": "5024717285821443610-242ac11f-0001-014",
+>     "internalUsername": null,
+>     "lastCheck": null,
+>     "lastSuccess": null,
+>     "lastUpdated": "2016-06-03T17:24:59.000-05:00",
+>     "nextUpdate": "2016-06-03T17:29:59.000-05:00",
+>     "owner": "nryan",
+>     "target": "storage.example.com",
+>     "updateSystemStatus": false,
+>     "_links": {
+>         "checks": {
+>             "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014/checks"
+>         },
+>         "notifications": {
+>             "href": "https://public.agaveapi.co/notifications/v2/?associatedUuid=5024717285821443610-242ac11f-0001-014"
+>         },
+>         "owner": {
+>             "href": "https://public.agaveapi.co/profiles/v2/nryan"
+>         },
+>         "self": {
+>             "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014"
+>         },
+>         "system": {
+>             "href": "https://public.agaveapi.co/systems/v2/storage.example.com"
+>         }
+>     }
+> }
 > ```
 {: .solution}
 
@@ -395,10 +395,10 @@ monitors-delete 5024717285821443610-242ac11f-0001-014
 > ### Show cURL &nbsp;&nbsp;
 >
 > ```shell
-curl -sk -H "Authorization: Bearer $AUTH_TOKEN"
-    -H "Content-Type: application/json"
-    -X DELETE
-    https://public.agaveapi.co/monitors/v2/5024717285821443610-242ac11f-0001-014
+> curl -sk -H "Authorization: Bearer $AUTH_TOKEN"
+>     -H "Content-Type: application/json"
+>     -X DELETE
+>     https://public.agaveapi.co/monitors/v2/5024717285821443610-242ac11f-0001-014
 > ```
 {: .solution}
 
@@ -406,7 +406,7 @@ curl -sk -H "Authorization: Bearer $AUTH_TOKEN"
 
 To delete a monitor, simply make a DELETE request on the monitor.
 
-<aside class="notice"> Unlike systems, deleting a monitor will permanently delete the monitor and all its history, checks, etc.</aside>
+*Unlike systems, deleting a monitor will permanently delete the monitor and all its history, checks, etc.*
 
 ---
 
@@ -421,34 +421,34 @@ monitors-checks-list -v -l 1 -M 5024717285821443610-242ac11f-0001-014
 > ### Show cURL &nbsp;&nbsp;
 >
 > ```shell
-curl -sk -H "Authorization: Bearer $AUTH_TOKEN"
-    'https://public.agaveapi.co/monitors/v2/5024717285821443610-242ac11f-0001-014/checks?limit=1'
+> curl -sk -H "Authorization: Bearer $AUTH_TOKEN"
+>     'https://public.agaveapi.co/monitors/v2/5024717285821443610-242ac11f-0001-014/checks?limit=1'
 > ```
 {: .solution}
 
 > ### Show response &nbsp;&nbsp;
 >
 > ```json
-[
-    {
-        "created": "2016-06-03T17:29:59.000-05:00",
-        "id": "4035070921477123610-242ac11f-0001-015",
-        "message": null,
-        "result": "PASSED",
-        "type": "STORAGE",
-        "_links": {
-            "monitor": {
-                "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014"
-            },
-            "self": {
-                "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014/checks/4035070921477123610-242ac11f-0001-015"
-            },
-            "system": {
-                "href": "https://public.agaveapi.co/systems/v2/storage.example.com"
-            }
-        }
-    }
-]
+> [
+>     {
+>         "created": "2016-06-03T17:29:59.000-05:00",
+>         "id": "4035070921477123610-242ac11f-0001-015",
+>         "message": null,
+>         "result": "PASSED",
+>         "type": "STORAGE",
+>         "_links": {
+>             "monitor": {
+>                 "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014"
+>             },
+>             "self": {
+>                 "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014/checks/4035070921477123610-242ac11f-0001-015"
+>             },
+>             "system": {
+>                 "href": "https://public.agaveapi.co/systems/v2/storage.example.com"
+>             }
+>         }
+>     }
+> ]
 > ```
 {: .solution}
 
@@ -471,32 +471,32 @@ monitors-checks-search -v -l 1 \
 > ### Show cURL &nbsp;&nbsp;
 >
 > ```shell
-curl -sk -H "Authorization: Bearer $AUTH_TOKEN" \   
-    'https://public.agaveapi.co/monitors/v2/5024717285821443610-242ac11f-0001-014/checks?limit=1&result.eq=PASSED'
+> curl -sk -H "Authorization: Bearer $AUTH_TOKEN" \   
+>     'https://public.agaveapi.co/monitors/v2/5024717285821443610-242ac11f-0001-014/checks?limit=1&result.eq=PASSED'
 > ```
 {: .solution}
 
 > ### Show response &nbsp;&nbsp;
 >
 > ```json
-[
-    {
-        "created": "2016-06-03T17:29:59.000-05:00",
-        "id": "4035070921477123610-242ac11f-0001-015",
-        "message": null,
-        "result": "PASSED",
-        "type": "STORAGE",
-        "_links": {
-            "monitor": {
-                "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014"
-            },
-            "self": {
-                "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014/checks/4035070921477123610-242ac11f-0001-015"
-            },
-            "system": {
-                "href": "https://public.agaveapi.co/systems/v2/storage.example.com"
-            }
-        }
+> [
+>     {
+>         "created": "2016-06-03T17:29:59.000-05:00",
+>         "id": "4035070921477123610-242ac11f-0001-015",
+>         "message": null,
+>         "result": "PASSED",
+>         "type": "STORAGE",
+>         "_links": {
+>             "monitor": {
+>                 "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014"
+>             },
+>             "self": {
+>                 "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014/checks/4035070921477123610-242ac11f-0001-015"
+>             },
+>             "system": {
+>                 "href": "https://public.agaveapi.co/systems/v2/storage.example.com"
+>             }
+>         }
 >     }
 > ]
 > ```
