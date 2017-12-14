@@ -415,8 +415,7 @@ To delete a monitor, simply make a DELETE request on the monitor.
 Listing past monitor checks
 
 ```plaintext
-monitors-checks-list -v -l 1
-    -M 5024717285821443610-242ac11f-0001-014
+monitors-checks-list -v -l 1 -M 5024717285821443610-242ac11f-0001-014
 ``` 
 
 > ### Show cURL &nbsp;&nbsp;
@@ -498,8 +497,8 @@ curl -sk -H "Authorization: Bearer $AUTH_TOKEN" \
                 "href": "https://public.agaveapi.co/systems/v2/storage.example.com"
             }
         }
-    }
-]
+>     }
+> ]
 > ```
 {: .solution}  
 
@@ -518,34 +517,34 @@ monitors-fire -v 5024717285821443610-242ac11f-0001-014
 > ### Show cURL &nbsp;&nbsp;
 >
 > ```shell
-curl -sk -H "Authorization: Bearer $AUTH_TOKEN" \
-     -H "Content-Type: application-json" \
-     -X POST --data-binary '{}' \
-    https://public.agaveapi.co/monitors/v2/5024717285821443610-242ac11f-0001-014/checks
+> curl -sk -H "Authorization: Bearer $AUTH_TOKEN" \
+>      -H "Content-Type: application-json" \
+>      -X POST --data-binary '{}' \
+>     https://public.agaveapi.co/monitors/v2/5024717285821443610-242ac11f-0001-014/checks
 > ```
 {: .solution}
 
 > ### Show response &nbsp;&nbsp;
 >
 > ```json
-{
-    "created": "2016-06-10T11:30:58.920-05:00",
-    "id": "5314048891498786330-242ac11f-0001-015",
-    "message": null,
-    "result": "PASSED",
-    "type": "STORAGE",
-    "_links": {
-        "monitor": {
-            "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014"
-        },
-        "self": {
-            "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014/checks/5314048891498786330-242ac11f-0001-015"
-        },
-        "system": {
-            "href": "https://public.agaveapi.co/systems/v2/storage.example.com"
-        }
-    }
-}
+> {
+>     "created": "2016-06-10T11:30:58.920-05:00",
+>     "id": "5314048891498786330-242ac11f-0001-015",
+>     "message": null,
+>     "result": "PASSED",
+>     "type": "STORAGE",
+>     "_links": {
+>         "monitor": {
+>             "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014"
+>         },
+>         "self": {
+>             "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014/checks/5314048891498786330-242ac11f-0001-015"
+>         },
+>         "system": {
+>             "href": "https://public.agaveapi.co/systems/v2/storage.example.com"
+>         }
+>     }
+> }
 > ```
 {: .solution}
 
@@ -572,33 +571,33 @@ monitors-history -v 5024717285821443610-242ac11f-0001-014
 > ### Show cURL &nbsp;&nbsp;
 >
 > ```shell
-curl -sk -H "Authorization: Bearer $AUTH_TOKEN" \
-     -H "Content-Type: application-json" \
-     -X POST --data-binary '{}' \
-    https://public.agaveapi.co/monitors/v2/5024717285821443610-242ac11f-0001-014/history
+> curl -sk -H "Authorization: Bearer $AUTH_TOKEN" \
+>      -H "Content-Type: application-json" \
+>      -X POST --data-binary '{}' \
+>     https://public.agaveapi.co/monitors/v2/5024717285821443610-242ac11f-0001-014/history
 > ```
 {: .solution}
 
 > ### Show response &nbsp;&nbsp;
 >
 > ```json
-[
-  {
-    "createdBy": "nryan",
-    "created": "2016-06-12T19:10:22Z",
-    "status": "CREATED",
-    "description": "This monitor was created by nryan",
-    "id": "5705275956568068582-242ac11f-0001-035",
-    "_links": {
-      "self": {
-        "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014/history/5705275956568068582-242ac11f-0001-035"
-      },
-      "monitor_event": {
-        "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014"
-      }
-    }
-  }
-]
+> [
+>   {
+>     "createdBy": "nryan",
+>     "created": "2016-06-12T19:10:22Z",
+>     "status": "CREATED",
+>     "description": "This monitor was created by nryan",
+>     "id": "5705275956568068582-242ac11f-0001-035",
+>     "_links": {
+>       "self": {
+>         "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014/history/5705275956568068582-242ac11f-0001-035"
+>       },
+>       "monitor_event": {
+>         "href": "https://public.agaveapi.co/monitor/v2/5024717285821443610-242ac11f-0001-014"
+>       }
+>     }
+>   }
+> ]
 > ```
 {: .solution}
 
