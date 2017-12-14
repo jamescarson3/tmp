@@ -214,8 +214,9 @@ Update an existing monitor
 ```plaintext
 monitors-addupdate -S storage.example.com -I 5 -U false 5024717285821443610-242ac11f-0001-014
 ```
-### Show cURL &nbsp;&nbsp;
-```shell
+> ### Show cURL &nbsp;&nbsp;
+>
+> ```shell
 curl -sk -H "Authorization: Bearer $AUTH_TOKEN" \
      -H "Content-Type: application-json" \
      -X POST \
@@ -258,7 +259,8 @@ curl -sk -H "Authorization: Bearer $AUTH_TOKEN" \
         }
     }
 }
-```  
+> ```
+{: .solution} 
 
 Monitors can be managed by making traditional GET, POST, and DELETE operations. When updating a monitor, pay attention to the response because the time of the next check will change. In fact, any change to a monitor will recalculate the time when the next health check will run. 
 
@@ -272,16 +274,19 @@ Disable an existing monitor
 monitors-disable 5024717285821443610-242ac11f-0001-014
 ```
 
-```shell
+> ### Show cURL &nbsp;&nbsp;
+>
+> ```shell
 curl -sk -H "Authorization: Bearer $AUTH_TOKEN"
     -H "Content-Type: application/json"
     -X PUT --data-binary '{"action": "disable"}'
     https://public.agaveapi.co/monitors/v2/5024717285821443610-242ac11f-0001-014
-```
+> ```
+{: .solution}
 
-> The response will look something like the following:
-
-```json
+> ### Show response &nbsp;&nbsp;
+>
+> ```json
 {
     "active": false,
     "created": "2016-06-03T17:22:59.000-05:00",
@@ -313,7 +318,8 @@ curl -sk -H "Authorization: Bearer $AUTH_TOKEN"
         }
     }
 }
-```
+> ```
+{: .solution}
 
 There may be times when you need to pause a monitor. If your system has scheduled maintenance periods, you may want to disable the monitor until the maintenance period ends. You can do this by making a PUT request on a monitor with the a field name `action` set to "disabled". While disabled, all health checks will be skipped. 
 
@@ -327,14 +333,19 @@ Enable an existing monitor
 monitors-enable 5024717285821443610-242ac11f-0001-014
 ```
 
-```shell
+> ### Show cURL &nbsp;&nbsp;
+>
+> ```shell
 curl -sk -H "Authorization: Bearer $AUTH_TOKEN"
     -H "Content-Type: application/json"
     -X PUT --data-binary '{"action": "enable"}'
     https://public.agaveapi.co/monitors/v2/5024717285821443610-242ac11f-0001-014
-```
+> ```
+{: .solution}
 
-```json
+> ### Show response &nbsp;&nbsp;
+>
+> ```json
 {
     "active": true,
     "created": "2016-06-03T17:22:59.000-05:00",
@@ -366,7 +377,8 @@ curl -sk -H "Authorization: Bearer $AUTH_TOKEN"
         }
     }
 }
-```
+> ```
+{: .solution}
 
 Similarly, to enable a monitor, make a PUT request with the a field name `action` set to "enabled". Once reenabled, the monitor will resume its previous check schedule as specified in the `nextUpdate` field, or immediately if that time has already expired.
 
@@ -380,12 +392,15 @@ Deleting an existing monitor
 monitors-delete 5024717285821443610-242ac11f-0001-014
 ```
 
-```shell
+> ### Show cURL &nbsp;&nbsp;
+>
+> ```shell
 curl -sk -H "Authorization: Bearer $AUTH_TOKEN"
     -H "Content-Type: application/json"
     -X DELETE
     https://public.agaveapi.co/monitors/v2/5024717285821443610-242ac11f-0001-014
-```
+> ```
+{: .solution}
 
 > An empty response will be returned
 
@@ -404,14 +419,17 @@ monitors-checks-list -v -l 1
     -M 5024717285821443610-242ac11f-0001-014
 ``` 
 
-```shell
+> ### Show cURL &nbsp;&nbsp;
+>
+> ```shell
 curl -sk -H "Authorization: Bearer $AUTH_TOKEN"
     'https://public.agaveapi.co/monitors/v2/5024717285821443610-242ac11f-0001-014/checks?limit=1'
-``` 
+> ```
+{: .solution}
 
-> The response will look something like the following:
-
-```json
+> ### Show response &nbsp;&nbsp;
+>
+> ```json
 [
     {
         "created": "2016-06-03T17:29:59.000-05:00",
@@ -432,7 +450,8 @@ curl -sk -H "Authorization: Bearer $AUTH_TOKEN"
         }
     }
 ]
-```
+> ```
+{: .solution}
 
 Each instance of a monitor testing a system is called a Check. Monitor Checks are persisted over time and query able as a collection of a monitor resource. Monitor checks can be queried by result, timeframe, and type. By default, the last check is injected into a monitor description as the `lastCheck` field. 
 
@@ -450,14 +469,17 @@ monitors-checks-search -v -l 1 \
     result.eq=PASSED
 ```  
 
-```shell
+> ### Show cURL &nbsp;&nbsp;
+>
+> ```shell
 curl -sk -H "Authorization: Bearer $AUTH_TOKEN" \   
     'https://public.agaveapi.co/monitors/v2/5024717285821443610-242ac11f-0001-014/checks?limit=1&result.eq=PASSED'
-```  
+> ```
+{: .solution}
 
-> The response will look something like the following:
-
-```json
+> ### Show response &nbsp;&nbsp;
+>
+> ```json
 [
     {
         "created": "2016-06-03T17:29:59.000-05:00",
@@ -478,7 +500,8 @@ curl -sk -H "Authorization: Bearer $AUTH_TOKEN" \
         }
     }
 ]
-```  
+> ```
+{: .solution}  
 
 Long-running monitor checks can build up a large history which can become prohibitive to page through. When generating graphs and looking for specific incidents, you can search for specific checks based on `result`, `startTime`, `endTime`, `type`, and `id`. The standard JSON SQL search syntax used across the rest of the Science APIs is supported for monitor checks as well.
 
@@ -492,16 +515,19 @@ Long-running monitor checks can build up a large history which can become prohib
 monitors-fire -v 5024717285821443610-242ac11f-0001-014  
 ```  
 
-```shell
+> ### Show cURL &nbsp;&nbsp;
+>
+> ```shell
 curl -sk -H "Authorization: Bearer $AUTH_TOKEN" \
      -H "Content-Type: application-json" \
      -X POST --data-binary '{}' \
     https://public.agaveapi.co/monitors/v2/5024717285821443610-242ac11f-0001-014/checks
-```
+> ```
+{: .solution}
 
-> The response will look something like the following:
-
-```json
+> ### Show response &nbsp;&nbsp;
+>
+> ```json
 {
     "created": "2016-06-10T11:30:58.920-05:00",
     "id": "5314048891498786330-242ac11f-0001-015",
@@ -520,7 +546,8 @@ curl -sk -H "Authorization: Bearer $AUTH_TOKEN" \
         }
     }
 }
-```
+> ```
+{: .solution}
 
 If you need to verify the accessibility of your system, or behavior of your monitor, you can force an existing monitor to run on demand by sending a POST request to the monitor checks collection. When doing this, you are still subject to the same minimum check interval configured for your tenant. 
 
@@ -542,16 +569,19 @@ List the change history of a monitor
 monitors-history -v 5024717285821443610-242ac11f-0001-014
 ```
 
-```shell
+> ### Show cURL &nbsp;&nbsp;
+>
+> ```shell
 curl -sk -H "Authorization: Bearer $AUTH_TOKEN" \
      -H "Content-Type: application-json" \
      -X POST --data-binary '{}' \
     https://public.agaveapi.co/monitors/v2/5024717285821443610-242ac11f-0001-014/history
-```
+> ```
+{: .solution}
 
-> The response will look something like the following:
-
-```json
+> ### Show response &nbsp;&nbsp;
+>
+> ```json
 [
   {
     "createdBy": "nryan",
@@ -569,15 +599,14 @@ curl -sk -H "Authorization: Bearer $AUTH_TOKEN" \
     }
   }
 ]
-```
+> ```
+{: .solution}
 
 A full history of the lifecycle of a monitor is available via the monitor history collection. Here you can list events that have occurred during the life of the monitor.
 
 ---
 
 ## Events
-
-The following events will be thrown by the Monitors API.
 
 The following events will be thrown by the Monitors API.
 
